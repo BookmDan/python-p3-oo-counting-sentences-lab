@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 class MyString:
-  def __init__(self):
-    self._value = ''
+  def __init__(self, value=''):
+    self._value = value
 
   @property 
   def value(self):
@@ -27,10 +27,10 @@ class MyString:
   def count_sentences(self):
     cleaned_value = self._value.replace('?!', '.').replace('!!', '.').replace('?','.').replace('!', '.')
     sentences = cleaned_value.split('.')
-    non_empt_sent = []
-    for sentence in sentences:
-      if sentence:
-        non_empt_sent.append(sentence)
+    non_empt_sent = [sentence for sentence in sentences if sentence]
+    # for sentence in sentences:
+    #   if sentence:
+    #     non_empt_sent.append(sentence)
     return len(non_empt_sent)
   
 
